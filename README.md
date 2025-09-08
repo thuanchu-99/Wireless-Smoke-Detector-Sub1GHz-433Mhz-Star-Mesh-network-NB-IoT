@@ -14,91 +14,93 @@ v
 [ Buttons, LEDs, Speaker (Audio Feedback) ]
 
 
+
 - **MCU (Holtek HT68RV035)**  
   - Manages RF communication and peripheral control  
-  - Handles button input, LED indication, and audio feedback  
-  - Runs firmware in Embedded C for real-time RF signal processing  
+  - Handles button inputs, LED indicators, and buzzer alerts  
+  - Programmed in Embedded C for real-time RF signal processing  
 
-- **RF Subsystem (BC2161, 433MHz)**  
-  - Sub-1GHz OOK modulation/demodulation  
-  - Supports star/mesh network communication  
-  - Integrated antenna matching and RF frontend design  
+- **RF System (BC2161, 433MHz)**  
+  - OOK modulation/demodulation at Sub-1GHz band  
+  - Supports star and mesh networking  
+  - Includes LC matching network and RF frontend  
 
 - **User Interface**  
   - 4 programmable push buttons  
-  - Status LED (pairing, alert, error)  
-  - 8Ω/0.25W speaker for audio alerts and RF pairing feedback  
+  - LED for status indication (pairing, alarm, fault)  
+  - 8Ω/0.25W buzzer for audible alerts and RF pairing feedback  
 
 - **Networking**  
-  - Local RF communication: 433MHz Sub-1GHz  
+  - Local RF: 433MHz Sub-1GHz  
   - Cloud uplink: NB-IoT gateway  
-  - Topology: Star or mesh, configurable  
+  - Supported topology: Star / Mesh  
 
 ---
 
-## 🖥 Image Descriptions
+## 🖥 Illustrations
 
-### 1. RF Control Board – Top View
+### 1. RF Schematic (433MHz Frontend + MCU)
+<img src="./Images/9e8ad36d-ccb5-41ab-a6aa-cda763a9ee73.jpg" width="600">  
+- LC matching network for 433MHz band.  
+- Holtek HT68RV035 MCU managing I/O, RF, and peripherals.  
+- Buzzer and LED connected via GPIO with PWM support.  
+
+---
+
+### 2. RF Board – Top View
 <img src="./Images/bm23p105-r41-1.png" width="500">  
 - Main PCB with Holtek MCU and BC2161 RF IC.  
-- Exposed header pins for programming/debugging.  
-- Integrated 433MHz coil antenna.  
+- Header for programming/debugging.  
+- Integrated 433MHz helical antenna.  
 
 ---
 
-### 2. RF Schematic (433MHz Frontend + MCU)
-<img src="./Images/9e8ad36d-ccb5-41ab-a6aa-cda763a9ee73.jpg" width="600">  
-- RF front-end network for 433MHz band with LC matching.  
-- Holtek HT68RV035 MCU managing digital I/O, RF interface, and control signals.  
-- Speaker and LED connected to MCU GPIO with PWM audio support.  
-
----
-
-### 3. Control Board with Buttons & Speaker
+### 3. Control Board with Buttons & Buzzer
 <img src="./Images/bm23p105-r41-02.png" width="500">  
-- 4 programmable push buttons for control and pairing.  
-- Small 8Ω/0.25W speaker for alerts.  
-- On-board spring antenna for RF communication.  
+- 4 programmable push buttons for control and RF pairing.  
+- Small 8Ω/0.25W buzzer for sound alerts.  
+- Helical antenna soldered directly on PCB.  
 
 ---
 
-### 4. RF Module (Assembled PCB, back view)
+### 4. RF Module (Assembled PCB, Back View)
 <img src="./Images/bm23p105-r41-03.png" width="500">  
-- Back side of RF PCB showing RF IC, MCU, and passives.  
-- Optimized ground plane for RF stability.  
-- Compact form factor for integration inside smoke detector housing.  
+- Back side of PCB with RF IC, MCU, and passive components.  
+- Optimized ground plane layout for RF stability.  
+- Compact design suitable for smoke detector housing integration.  
 
 ---
 
-## 🔧 Hardware Details
+## 🔧 Hardware Specifications
 - **MCU**: Holtek HT68RV035  
-- **RF IC**: BC2161 (433MHz OOK modulation/demodulation)  
+- **RF IC**: BC2161 (433MHz, OOK)  
 - **Peripherals**:  
-  - 4x push buttons (user input / pairing)  
-  - 1x LED indicator  
-  - 1x 8Ω / 0.25W speaker (PWM driven)  
-- **RF Network**: LC-matching network, spring antenna, 433MHz tuned  
-- **Power Supply**: 3.3V LDO from battery pack  
+  - 4 push buttons (control/pairing)  
+  - 1 LED status indicator  
+  - 1 buzzer 8Ω / 0.25W (PWM)  
+- **RF Network**: 433MHz helical antenna + LC matching circuit  
+- **Power**: Battery + 3.3V LDO regulator  
 
 ---
 
 ## 🛡 Safety Features
-- Real-time smoke alert via RF + NB-IoT  
-- Audio + LED indication for local alerts  
-- Fail-safe RF re-pairing via button input  
-- Watchdog timer on MCU for reliability  
-- Mesh redundancy (alerts forwarded via neighbors if direct link fails)  
+- Real-time smoke alarm via RF + NB-IoT  
+- On-site audible + visual alert  
+- RF re-pairing mode via push button  
+- MCU watchdog timer for reliability  
+- Mesh forwarding support for alert relays if direct link fails  
 
 ---
 
 ## 🚀 Future Improvements
-- Add AES encryption for RF payloads  
-- Implement low-power modes for extended battery life  
-- Support FSK modulation for higher noise immunity  
-- Add cloud integration for historical logging & remote alerts  
+- Add AES encryption for RF packets  
+- Ultra-low power mode for extended battery life  
+- FSK modulation support for better noise immunity  
+- Cloud logging for alarm history tracking  
 
 ---
 
 ## 📑 Notes
 This document is a **summary of the project**.  
-Due to **customer confidentiality agreements**, detailed schematics, PCB layouts, and firmware code **cannot be shared publicly**.  
+Due to **customer confidentiality policies**, detailed design (full schematic, firmware, PCB layout) **cannot**
+
